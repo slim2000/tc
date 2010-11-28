@@ -1,0 +1,226 @@
+<ul id="entity-options" style="display: none">
+  <!-- options for music -->
+
+  <li class="music-entity">
+    <%= link_to_remote "Artist",
+      {:update => "result",
+      :url  => {:action => :find_suggestion},
+      :with => "'entity=musicArtist&c=' +$('c').value+ '&m=' +$('m').value+ '&q=' +$('q').value+ '&limit=10'",
+      :loading => "$('ajax-loader').show();",
+      :complete => "$('ajax-loader').hide(); #{visual_effect(:highlight, "result", :duration => 0.5)}"},
+      {:onclick => "clicked(this)"}
+  %>
+  </li>
+  <li class="music-entity">
+    <%= filter_more_search_options("musicTrack","Track","entity") %>
+  </li>
+  <li class="music-entity">
+    <%= filter_more_search_options("album","Album","entity") %>
+  </li>
+  <li class="music-entity">
+    <%= filter_more_search_options("musicVideo","Video","entity") %>
+  </li>
+  <li class="music-entity">
+    <%= filter_more_search_options("mix","Mix","entity") %>
+  </li>
+  <li class="music-entity">
+    <%= link_to_function "+ Release", "$('album-release').toggle();changeLabelReleaseButton();", :id => "release_button" %>
+    <ul id="album-release" style="display: none">
+      <%- form_remote_tag :url => {:action => :find_suggestion},
+        :condition => "validate()",
+        :html => {:id => "album-release-filter"},
+        :update => :result,
+        :loading => "$('ajax-loader').show();",
+        :complete => "$('ajax-loader').hide(); #{visual_effect(:highlight, "result", :duration => 0.5)}" do %>
+
+        <%= hidden_field_tag "media" %>
+        <%= hidden_field_tag "country" %>
+        <%= hidden_field_tag "query" %>
+        <%= hidden_field_tag "cboxgenre[alternative]" %>
+        <%= hidden_field_tag "cboxgenre[hipHopRap]" %>
+        <%= hidden_field_tag "cboxgenre[rock]" %>
+        <%= hidden_field_tag "cboxgenre[newAge]" %>
+        <%= hidden_field_tag "cboxgenre[pop]" %>
+        <%= hidden_field_tag "cboxgenre[country]" %>
+        <%= hidden_field_tag "cboxgenre[bluegrass]" %>
+        <%= hidden_field_tag "cboxgenre[rnbsoul]" %>
+        <%= hidden_field_tag "cboxgenre[reggae]" %>
+        <%= hidden_field_tag "cboxgenre[heavymetal]" %>
+        <%= hidden_field_tag "cboxgenre[inspirational]" %>
+        <%= hidden_field_tag "cboxgenre[dance]" %>
+        <%= hidden_field_tag "cboxgenre[vocal]" %>
+        <%= hidden_field_tag "cboxgenre[world]" %>
+        <%= hidden_field_tag "cboxgenre[disney]" %>
+        <%= hidden_field_tag "cboxgenre[singersongwriter]" %>
+        <%= hidden_field_tag "cboxgenre[classical]" %>
+        <%= hidden_field_tag "cboxgenre[electronic]" %>
+        <%= hidden_field_tag "cboxgenre[soundtrack]" %>
+        <%= hidden_field_tag "cboxgenre[comedy]" %>
+        <%= submit_tag("", :id => "send_multi_param_btn", :style => "display:none")  %>
+
+        <li>On <%= select_year(14, {:field_name => "release_year", :start_year => 50.years.ago.year, :end_year => Date.today.year, :prompt => "Choose year"}, {:onchange => "putGenreValueToHiddenField('cboxgenre');putTermValueToHiddenField('release');setDefaultValueOnReleaseCustomRangeAndDecade();removeClassOnOptions();$('send_multi_param_btn').click()"}) %></li>
+
+        <li>
+          <%= link_to_function "+ Custom range", "$('custom-release-year').toggle();changeLabelCustomRangeReleaseButton()", :id => "custom_range_release_button" %>
+          <ul id="custom-release-year" style="display: none">
+            <li>
+              From <%= select_year(14, {:field_name => "release_year_from", :start_year => 50.years.ago.year, :end_year => Date.today.year, :prompt => "Choose year"}, {:onchange => "putGenreValueToHiddenField('cboxgenre');putTermValueToHiddenField('release');setDefaultValueOnReleaseYearAndDecade();removeClassOnOptions('range');$('send_multi_param_btn').click()"}) %>
+            </li>
+            <li>To <%= select_year(14, {:field_name => "release_year_to", :start_year => 50.years.ago.year, :end_year => Date.today.year, :prompt => "Choose year"}, {:onchange => "putGenreValueToHiddenField('cboxgenre');putTermValueToHiddenField('release');setDefaultValueOnReleaseYearAndDecade();removeClassOnOptions('range');$('send_multi_param_btn').click()"}) %>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <%= link_to_function "+ By decade", "$('release-by-decade').toggle();changeLabelDecadeReleaseButton()", :id => "decade_release_button" %>
+          <ul id="release-by-decade" style="display: none">
+            <li>
+              On <%= select_tag :st_decade, options_for_select(generate_decade_year), :onchange => "putGenreValueToHiddenField('cboxgenre');putTermValueToHiddenField('release');setDefaultValueOnReleaseCustomRangeAndReleaseYear();removeClassOnOptions();$('send_multi_param_btn').click()" %>
+            </li>
+          </ul>
+        </li>
+
+      <%- end %>
+
+    </ul>
+  </li>
+
+  <li class="music-entity">
+    <%= link_to_function "+ Genre", "$('music-genre').toggle();changeLabelGenreMenuButton()", :id => "genre_menu_button" %>
+    <ul id="music-genre" style="display: none">
+      <%- form_remote_tag :url => {:action => :find_suggestion},
+        :condition => "validate()",
+        :html => {:id => "music-genre-search"},
+        :update => :result,
+        :loading => "$('ajax-loader').show();",
+        :complete => "$('ajax-loader').hide(); #{visual_effect(:highlight, "result", :duration => 0.5)}" do %>
+
+        <%= hidden_field_tag "hfmedia" %>
+        <%= hidden_field_tag "hfcountry" %>
+        <%= hidden_field_tag "hfquery" %>
+        <%= hidden_field_tag "rls_year" %>
+        <%= hidden_field_tag "rls_year_from" %>
+        <%= hidden_field_tag "rls_year_to" %>
+        <%= hidden_field_tag "decade" %>
+
+        <li><%= check_box_tag "cbgenre[alternative]", "Alternative", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Alternative</li>
+
+        <li><%= check_box_tag "cbgenre[hipHopRap]", "Hip Hop/Rap", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Hip Hop/Rap</li>
+
+        <li><%= check_box_tag "cbgenre[rock]", "Rock", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Rock</li>
+
+        <li><%= check_box_tag "cbgenre[newAge]", "New Age", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> New Age</li>
+
+        <li><%= check_box_tag "cbgenre[pop]", "Pop", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Pop</li>
+
+        <li><%= check_box_tag "cbgenre[country]", "Country", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Country</li>
+
+        <li><%= check_box_tag "cbgenre[bluegrass]", "Bluegrass", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Bluegrass</li>
+
+        <li><%= check_box_tag "cbgenre[rnbsoul]", "R&B/Soul", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> R&B/Soul</li>
+
+        <li><%= check_box_tag "cbgenre[reggae]", "Reggae", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Reggae</li>
+
+        <li><%= check_box_tag "cbgenre[heavymetal]", "Heavy Metal", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Heavy Metal</li>
+
+        <li><%= check_box_tag "cbgenre[inspirational]", "Inspirational", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Inspirational</li>
+
+        <li><%= check_box_tag "cbgenre[dance]", "Dance", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Dance</li>
+
+        <li><%= check_box_tag "cbgenre[vocal]", "Vocal", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Vocal</li>
+
+        <li><%= check_box_tag "cbgenre[world]", "World", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> World</li>
+
+        <li><%= check_box_tag "cbgenre[disney]", "Disney", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Disney</li>
+
+        <li><%= check_box_tag "cbgenre[singersongwriter]", "Singer/Songwriter", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Singer/Songwriter</li>
+
+        <li><%= check_box_tag "cbgenre[classical]", "Classical", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Classical</li>
+
+        <li><%= check_box_tag "cbgenre[electronic]", "Electronic", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Electronic</li>
+
+        <li><%= check_box_tag "cbgenre[soundtrack]", "Soundtrack", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Soundtrack</li>
+
+        <li><%= check_box_tag "cbgenre[comedy]", "Comedy", false, :onchange => "putTermValueToHiddenField('genre');putReleaseYearValueToHiddenField('genre');putDecadeValueToHiddenField('genre');removeClassOnOptions();$('btn_send_genre_criteria').click()" %> Comedy</li>
+
+        <%= submit_tag("", :id => "btn_send_genre_criteria", :style => "display:none")  %>
+
+      <%- end %>
+
+    </ul>
+  </li>
+
+  <!-- options for movie -->
+  <li class="movie-entity" style="display: none">
+    <%= filter_more_search_options("movieArtist","Artist","entity") %>
+  </li>
+  <li class="movie-entity" style="display: none">
+    <%= filter_more_search_options("movie","Movie","entity") %>
+  </li>
+
+  <!-- options for all -->
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("movie","Movie","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("album","Album","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("allArtist","All Artist","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("podcast","Podcast","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("musicVideo","Music Video","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("mix","Mix","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("audiobook","Audiobook","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("tvSeason","Tv Season","entity") %>
+  </li>
+  <li class="all-entity" style="display: none">
+    <%= filter_more_search_options("allTrack","All Track","entity") %>
+  </li>
+
+  <!-- options for apps -->
+  <li class="software-entity" style="display: none">
+    <%= filter_more_search_options("software","Software","entity") %>
+  </li>
+
+  <!-- options for tv shows -->
+  <li class="tvshow-entity" style="display: none">
+    <%= filter_more_search_options("tvEpisode","Tv Episode","entity") %>
+  </li>
+  <li class="tvshow-entity" style="display: none">
+    <%= filter_more_search_options("tvSeason","Tv Season","entity") %>
+  </li>
+
+  <!-- options for podcast -->
+  <li class="podcast-entity" style="display: none">
+    <%= filter_more_search_options("podcastAuthor","Podcast Author","entity") %>
+  </li>
+  <li class="podcast-entity" style="display: none">
+    <%= filter_more_search_options("podcast","Podcast","entity") %>
+  </li>
+
+  <!-- options for audiobook -->
+  <li class="audiobook-entity" style="display: none">
+    <%= filter_more_search_options("audiobookAuthor","Audiobook author","entity") %>
+  </li>
+  <li class="audiobook-entity" style="display: none">
+    <%= filter_more_search_options("audiobook","Audiobook","entity") %>
+  </li>
+
+  <!-- options for music videos -->
+  <li class="music-video-entity" style="display: none">
+    <%= filter_more_search_options("musicVideo","Music video","entity") %>
+  </li>
+  <li class="music-video-entity" style="display: none">
+    <%= filter_more_search_options("musicArtist","Music artist","entity") %>
+  </li>
+</ul>

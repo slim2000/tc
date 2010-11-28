@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/slim2000_tc/!svn/ver/1/config/initializers
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/slim2000_tc/!svn/ver/1/config/initializers/inflections.rb
+END
+session_store.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/slim2000_tc/!svn/ver/1/config/initializers/session_store.rb
+END
+secret_token.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/slim2000_tc/!svn/ver/1/config/initializers/secret_token.rb
+END
+backtrace_silencers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/slim2000_tc/!svn/ver/1/config/initializers/backtrace_silencers.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/slim2000_tc/!svn/ver/1/config/initializers/mime_types.rb
+END

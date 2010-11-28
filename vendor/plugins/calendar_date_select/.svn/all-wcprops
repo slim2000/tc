@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select
+END
+History.txt
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/History.txt
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/Rakefile
+END
+Manifest.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/Manifest.txt
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/.gitignore
+END
+VERSION
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/VERSION
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/init.rb
+END
+calendar_date_select.gemspec
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/calendar_date_select.gemspec
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/MIT-LICENSE
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/README.txt
+END

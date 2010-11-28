@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/slim2000_tc/!svn/ver/1/app/views/home
+END
+_more_search_tools.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/slim2000_tc/!svn/ver/1/app/views/home/_more_search_tools.html.erb
+END
+find_suggestion.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/slim2000_tc/!svn/ver/1/app/views/home/find_suggestion.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/slim2000_tc/!svn/ver/1/app/views/home/index.html.erb
+END
+_entity.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/slim2000_tc/!svn/ver/1/app/views/home/_entity.html.erb
+END
+_attributes.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/slim2000_tc/!svn/ver/1/app/views/home/_attributes.erb
+END

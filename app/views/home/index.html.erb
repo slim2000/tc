@@ -1,0 +1,66 @@
+<div class="side-menu"><%= render :partial => "more_search_tools" %></div>
+<div class="content">
+  <table align="center">
+    <tr>
+      <td><h1><%= link_to_function "Tune Challenge", "resetForm()" %></h1></td>
+    </tr>
+  </table>
+
+  <% form_remote_tag :url => {:action => :find_suggestion},
+    :condition => "validate()",
+    :html => {:id => "itunes-search"},
+    :update => :result,
+    :loading => "$('ajax-loader').show();",
+    :complete => "$('ajax-loader').hide(); #{visual_effect(:highlight, "result", :duration => 0.5)}" do %>
+
+    <%= hidden_field_tag "hf_cboxgenre[alternative]" %>
+    <%= hidden_field_tag "hf_cboxgenre[hipHopRap]" %>
+    <%= hidden_field_tag "hf_cboxgenre[rock]" %>
+    <%= hidden_field_tag "hf_cboxgenre[newAge]" %>
+    <%= hidden_field_tag "hf_cboxgenre[pop]" %>
+    <%= hidden_field_tag "hf_cboxgenre[country]" %>
+    <%= hidden_field_tag "hf_cboxgenre[bluegrass]" %>
+    <%= hidden_field_tag "hf_cboxgenre[rnbsoul]" %>
+    <%= hidden_field_tag "hf_cboxgenre[reggae]" %>
+    <%= hidden_field_tag "hf_cboxgenre[heavymetal]" %>
+    <%= hidden_field_tag "hf_cboxgenre[inspirational]" %>
+    <%= hidden_field_tag "hf_cboxgenre[dance]" %>
+    <%= hidden_field_tag "hf_cboxgenre[vocal]" %>
+    <%= hidden_field_tag "hf_cboxgenre[world]" %>
+    <%= hidden_field_tag "hf_cboxgenre[disney]" %>
+    <%= hidden_field_tag "hf_cboxgenre[singersongwriter]" %>
+    <%= hidden_field_tag "hf_cboxgenre[classical]" %>
+    <%= hidden_field_tag "hf_cboxgenre[electronic]" %>
+    <%= hidden_field_tag "hf_cboxgenre[soundtrack]" %>
+    <%= hidden_field_tag "hf_cboxgenre[comedy]" %>
+    <%= hidden_field_tag "hf_release_year" %>
+    <%= hidden_field_tag "hf_release_year_from" %>
+    <%= hidden_field_tag "hf_release_year_to" %>
+    <%= hidden_field_tag "hf_decade" %>
+
+    <div class="searching">
+      <%= text_field_tag("q", nil, {:id => "q", :onkeyup => "putGenreValueToHiddenField('hf_cboxgenre');putReleaseYearValueToHiddenField('term');putDecadeValueToHiddenField('term')"}) %>
+      <%= image_tag "ajax-loader.gif", {:id => "ajax-loader", :style => "display:none"} %>
+    </div>
+    <br />
+    <table align="center">
+      <tr>
+        <td>
+          <%= select_tag("m", options_for_select([["All", "all"], ["Music", "music"], ["Apps", "software"], ["Movies", "movie"], ["TV Shows", "tvShow"], ["Podcast", "podcast"], ["Audiobooks", "audiobook"], ["Music Videos", "musicVideo"]], "music"), :id => "m", :onchange => "filterEntityAndAttribute();putGenreValueToHiddenField('hf_cboxgenre');putDecadeValueToHiddenField('term')")  %>
+        </td>
+        <td>
+          <%= select_tag("c", options_for_select(Carmen::COUNTRIES, "US"), :id => "c", :onchange => "putGenreValueToHiddenField('hf_cboxgenre');putDecadeValueToHiddenField('term')") %>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>
+
+<%= content_tag :div, nil, :id => "result" %>
+
+<%= observe_form "itunes-search", :url => { :action => :find_suggestion },
+  :frequency => 1,
+  :condition => "validate()",
+  :update => :result,
+  :loading => "$('ajax-loader').show();",
+  :complete => "$('ajax-loader').hide(); #{visual_effect(:highlight, "result", :duration => 0.5)}" %>

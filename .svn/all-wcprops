@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/slim2000_tc/!svn/ver/1
+END
+Gemfile.lock
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/slim2000_tc/!svn/ver/1/Gemfile.lock
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/slim2000_tc/!svn/ver/1/Rakefile
+END
+Gemfile
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/slim2000_tc/!svn/ver/1/Gemfile
+END
+config.ru
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/slim2000_tc/!svn/ver/1/config.ru
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/slim2000_tc/!svn/ver/1/README
+END

@@ -1,0 +1,31 @@
+<div id="image-content">
+  <% if @items.blank? -%>
+    <p>Oops, Sorry... There is no result found!</p>
+  <% else %>
+    <ul>
+      <%- number = 0 %>
+      <% @items.each do |item| %>
+        <%- release_year = item["releaseDate"].split("-").first rescue nil %>
+        <%- if (@genre.nil? or @genre.length == 0 or @genre.include?(item["primaryGenreName"])) and
+            (@release_year.blank? or release_year.eql?(@release_year)) and
+            (@release_year_range.nil? or @release_year_range.include?(release_year)) %>
+          <%- number += 1 %>
+          <li class="searching-result-data">
+            <a href="<%= item["trackViewUrl"] %>" target="_blank">
+              <div>
+                <p><%= number %></p>
+                <p><%= image_tag item["artworkUrl100"] rescue "" %></p>
+                <p align="center"><%= truncate(item["trackName"], :length => 23) %></p>
+                <p align="center"><%= item["artistName"] %></p>
+                <p align="center"><%= item["primaryGenreName"] %></p>
+                <p align="center"><%= item["contentAdvisoryRating"] %></p>
+                <p align="center"><%= release_year %></p>
+              </div>
+            </a>
+          </li>
+        <%- end %>
+      <% end %>
+    </ul>
+    <p><%= "Oops, Sorry... There is no result found!" if number == 0 %></p>
+  <% end %>
+</div>

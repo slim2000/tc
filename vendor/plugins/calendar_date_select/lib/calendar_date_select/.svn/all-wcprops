@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/lib/calendar_date_select
+END
+calendar_date_select.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/lib/calendar_date_select/calendar_date_select.rb
+END
+form_helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/lib/calendar_date_select/form_helpers.rb
+END
+includes_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/slim2000_tc/!svn/ver/1/vendor/plugins/calendar_date_select/lib/calendar_date_select/includes_helper.rb
+END

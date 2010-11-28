@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/slim2000_tc/!svn/ver/1/db
+END
+development.sqlite3
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/slim2000_tc/!svn/ver/1/db/development.sqlite3
+END
+seeds.rb
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/slim2000_tc/!svn/ver/1/db/seeds.rb
+END
