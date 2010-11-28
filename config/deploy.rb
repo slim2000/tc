@@ -49,3 +49,4 @@ namespace :deploy do
 # Actually.. .the above link only works up to the point where script/process is discussed which we don't have in Rails 3.03
 # Soo....http://mediumexposure.com/rails-3-reading-material/
 # Dealing with running Capistrano not as root or with sudo http://blog.smartlogicsolutions.com/2008/06/06/deploying-rails-apps-with-capistrano-without-root-or-sudo-privileges/
+# Had to make new sqlite.. good resource here on Rails on Centos 5.5 http://amitava1.blogspot.com/2010/08/ruby-on-rails-on-centos-55-with.html
