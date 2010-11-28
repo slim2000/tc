@@ -24,19 +24,26 @@ set :deploy_to, "/var/www/html/#{application}"
 role :web, "ec2-72-44-53-209.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
 role :app, "ec2-72-44-53-209.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
 role :db,  "ec2-72-44-53-209.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
+
 #role :db,  "your slave db-server here"
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
 # these http://github.com/rails/irs_process_scripts
 
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+after "deploy", "deploy:bundle_gems"
+after "deploy:bundle_gems", "deploy:restart"
+
+namespace :deploy do
+  task :bundle_gems do
+    run "cd #{deploy_to}/current && bundle install vendor/gems"
+  end
+   task :start do ; end
+   task :stop do ; end
+   task :restart, :roles => :app, :except => { :no_release => true } do
+     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+   end
+ end
 
 # Help with running Capistrano https://github.com/capistrano/capistrano/wiki/2.x-From-The-Beginning
 # Actually.. .the above link only works up to the point where script/process is discussed which we don't have in Rails 3.03
